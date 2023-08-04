@@ -1,3 +1,4 @@
+
 # **Exploring Stroke-Level Modifications for Scene Text Editing**
 
 논문을 읽는 이유
@@ -184,24 +185,3 @@ Conclusion
 
 논문을 읽고 난 후 고찰
 - Background Module과 Text Style Transfer Module을 나누지 않고 동시에 작업하는 SRNet과 비교하여 추론한 결과 MOSTEL은 배경을 최대한 유지한 채 바꿀 Text에 대해서 style을 적용할 수 있었다. 이는 논문에서 제공된 성능 개선 전략들이 부합하다는 것을 나타내며, 영어로 학습된 모델이었기에 한국어로 Fine Tuning하기 위해 해당 논문의 github에서 공유되어 있는 weight로 한국어 Source Image를 추가로 학습시켰다.
-
-Guide masking image를 참고하여 Text 영역과 Background 영역을 분리하여 Inpaint 수행
-
-내일 웹사이트 배경화면 바꿔야함
-
-Future work 더 추가
-
-inference 사진 교체 p.43, 44 
-
-29, 45p 멘트 수정하고 배경 회색으로 넣어주고 버튼모양으로 바꾸기
-
-32p 글자 정렬
-
-30p 한 번에 Inpaint & Transfer를 진행하는 SRNet과 달리 Mostel Method를 적용시켜 높은 퀄리티로 Transfer 성능 개선
-
-26p 배경 회색 넣어주기
-
-6p 다시 해주기
-
-1. 모스텔 아키텍쳐 수정 p.27
-2. loss 지표가 없는데 어캐 찍노 주작,,?
