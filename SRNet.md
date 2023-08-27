@@ -8,7 +8,7 @@
 
 ### 용어 정리
 
-| Image | Description |
+|Image | Description |
 | --- | --- |
 | i_s | 원본 텍스트 이미지 |
 | i_t | 타겟 텍스트 이미지 |
