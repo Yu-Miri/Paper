@@ -1,16 +1,24 @@
 
 # **Exploring Stroke-Level Modifications for Scene Text Editing**
 ### 용어 정리
+### 용어 설명
 
-| Image | Description |
+| Image | Description |
 | --- | --- |
 | i_s | 원본 텍스트 이미지 |
 | i_t | 타겟 텍스트 이미지 |
-| tsk | 타겟 텍스트의 골격 이미지 |
-| t_t | i_s 이미지의 텍스트 스타일을 타겟 텍스트에 적용시킨 이미지 |
-| t_b | i_s 이미지에서 텍스트를 제거한 이미지 |
-| mask_t | 이진화된 폰트 스타일 이미지 |
-| t_f | 최종 변환 텍스트 이미지 |
+| guide_s | 이진화된 Masking 원본 텍스트 이미지 |
+| guide_t | 이진화된 Masking 타겟 텍스트 이미지 |
+| o_s | i_s 이미지에서 텍스트를 제거한 이미지 |
+| o_t | 타겟 텍스트에 i_s의 폰트 스타일을 적용시켜 생성한 이미지 |
+
+| Module | Description |
+| --- | --- |
+| BRM[Background Reconstruction Module] | 배경에서 유지해야 하는 영역을 분할 및 보존하여 텍스트를 지워주는 모듈 |
+| TMM[Text Modification Module] | 판독 불가능한 서체와 스타일을 추출하여 원본 이미지의 스타일을 학습하고 번역된 텍스트에 스타일을 적용하는 모듈 |
+| TPS[Thin Plate Splines] | 텍스트 윤곽을 파악할 수 있는 Anchor Point를 얻어 텍스트의 방향에 대한 정보를 제공하는 모듈 |
+| PSP[Pyramid Scene Parsing] | • 이미지의 크기를 여러 단위로 조정하여 하나의 입력 이미지에 대해서 다양한 크기를 학습하는 모듈 |
+| SLM[Stroke Level Modification] | 배경의 무결성을 위해 픽셀의 변화를 최소화하는 모듈 |
 
 논문을 읽는 이유
 
