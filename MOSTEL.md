@@ -2,14 +2,16 @@
 # **Exploring Stroke-Level Modifications for Scene Text Editing**
 ### 용어 정리
 
-| i_s | 원본 텍스트 이미지 |
+| Image | Description |
 | --- | --- |
+| i_s | 원본 텍스트 이미지 |
 | i_t | 타겟 텍스트 이미지 |
 | tsk | 타겟 텍스트의 골격 이미지 |
 | t_t | i_s 이미지의 텍스트 스타일을 타겟 텍스트에 적용시킨 이미지 |
 | t_b | i_s 이미지에서 텍스트를 제거한 이미지 |
 | mask_t | 이진화된 폰트 스타일 이미지 |
 | t_f | 최종 변환 텍스트 이미지 |
+
 논문을 읽는 이유
 
     - K-예능, 드라마의 Text를 OCR으로 Text Detection & Recognition 후에 영어로 Translation해서 동일한 Style으로 Transfer 하는 프로젝트 목표와 일치하는 Task이다.
