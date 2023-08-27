@@ -145,6 +145,7 @@ Text Modification Module(TMM) : Pre-Transformation & Modification Module
 - Loss
   
     <img width="529" alt="스크린샷 2023-08-27 오후 3 48 27" src="https://github.com/Yu-Miri/Paper/assets/121469490/bee61928-3dd9-4027-a46c-42fc879390ee">
+    
     - 예측된 Background Inpainting Image(O_s^)와 예측된 Fushion Image(O_t)는 **GAN loss(생성된 입력 텐서의 로그값 평균을 계산하고 음수를 취하여 Loss 계산)하므로** 와 **L2 loss(정답값 입력텐서와 생성한 입력 텐서 간 차이의 제곱을 계산하여 평균을 구하는 L2 loss)**로 최적화한다.
     - Editing Guidance의 Guide_s, Guide_t Image는 **Dice loss(정답값 입력 텐서와 생성한 입력 텐서 간의 교집합을 계산하여 평균을 구하고 1에서 뺀 값으로 정의되므로, Dice Loss는 정답과 생성한 타깃 간의 유사성이 높을 수록 손실이 작아진다. 즉, Loss를 낮추는 방향으로 학습)과 생성한** 채택한다.
     - 사실적인 Image Generator를 위해 **VGG loss(MSE 평균제곱의 오차를 계산하는 VGG Loss는 Perceptual Loss + Style Loss : 정답값 입력 텐서와 생성한 입력 텐서 사이의 절댓값 차이를 계산하여 계산된 차이의 평균을 구하는 L1 loss, 절댓값의 평균이므로 낮추는 방향으로 학습)를** 채택한다.
