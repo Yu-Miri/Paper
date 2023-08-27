@@ -1,10 +1,19 @@
 
 # **Exploring Stroke-Level Modifications for Scene Text Editing**
+### 용어 정리
 
+| i_s | 원본 텍스트 이미지 |
+| --- | --- |
+| i_t | 타겟 텍스트 이미지 |
+| tsk | 타겟 텍스트의 골격 이미지 |
+| t_t | i_s 이미지의 텍스트 스타일을 타겟 텍스트에 적용시킨 이미지 |
+| t_b | i_s 이미지에서 텍스트를 제거한 이미지 |
+| mask_t | 이진화된 폰트 스타일 이미지 |
+| t_f | 최종 변환 텍스트 이미지 |
 논문을 읽는 이유
 
-- K-예능, 드라마의 Text를 OCR으로 Text Detection & Recognition 후에 영어로 Translation해서 동일한 Style으로 Transfer 하는 프로젝트 목표와 일치하는 Task이다.
-- 해당 논문은 원본 이미지의 배경과 텍스트 스타일을 유지하면서 원하는 텍스트로 대체할 수 있도록 한다.
+    - K-예능, 드라마의 Text를 OCR으로 Text Detection & Recognition 후에 영어로 Translation해서 동일한 Style으로 Transfer 하는 프로젝트 목표와 일치하는 Task이다.
+    - 해당 논문은 원본 이미지의 배경과 텍스트 스타일을 유지하면서 원하는 텍스트로 대체할 수 있도록 한다.
 
 ## Abstract
 
@@ -32,8 +41,8 @@ Goal : 원본 이미지의 배경과 텍스트 스타일 유지하면서 원하�
         4. 최적화에 도움을 주며, 서로 다른 알고리즘이 상호 보완적인 경우에 효과적이다.
 
 ### SRNet과 MOSTEL의 차이점
+<img width="553" alt="스크린샷 2023-08-27 오후 3 46 45" src="https://github.com/Yu-Miri/Paper/assets/121469490/9dbba2da-5d54-4d9f-a188-58ed2605e489">
 
-![스크린샷 2023-05-31 오후 4.27.15.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fa9170cb-107d-44f2-9ec1-544ffd980317/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-05-31_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_4.27.15.png)
 
 - SRNet method
     - 동시에 Text Conversion으로부터 텍스트 스타일을 뽑고 Background Reconstruction에서 배경 추출해서 두 결과값을 fushion하여 출력한다.
@@ -47,8 +56,8 @@ Goal : 원본 이미지의 배경과 텍스트 스타일 유지하면서 원하�
     - Image 수준에서는 모든 픽셀을 수정하여 Editing train의 난이도를 높인다.
     - 생성된 텍스트 이미지를 명확하고 읽기 쉽게 하기 위해 장면 텍스트 recognizer가 훈련 단계에서 사용되며, Recognizer를 채택하는 것이 모든 측정 기준에 유익하다.
     - 성능 평가 데이터셋 : Tamper-Syn2k, Tamper-Scene
-
-![스크린샷 2023-05-31 오후 4.27.33.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/4b23a6f6-0af6-48ea-b475-3e493111f085/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-05-31_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_4.27.33.png)
+  
+<img width="556" alt="스크린샷 2023-08-27 오후 3 47 13" src="https://github.com/Yu-Miri/Paper/assets/121469490/7f1d0fd5-82fe-45c4-8ad0-99e85bdf8a48">
 
 ---
 
@@ -73,8 +82,8 @@ Scene Text Editing
 - SRNet에서 확장시켜 공간 변환을 텍스트 스타일에서 분리해 텍스트 변환 모듈의 학습 난이도를 낮추는 TPS 모듈 도입
 - Stroke level modification으로 가독성이 높은 텍스트 이미지를 생성한다.
 - 레이블이 지정된 합성 데이터셋과 실제 데이터셋에서 준지도 학습 방식으로 훈련된다.
-
-![스크린샷 2023-05-31 오후 5.29.27.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7acaf1ec-464c-48f2-8686-93f24fdccc0b/%E1%84%89%E1%85%B3%E1%84%8F%E1%85%B3%E1%84%85%E1%85%B5%E1%86%AB%E1%84%89%E1%85%A3%E1%86%BA_2023-05-31_%E1%84%8B%E1%85%A9%E1%84%92%E1%85%AE_5.29.27.png)
+  
+<img width="576" alt="스크린샷 2023-08-27 오후 3 47 34" src="https://github.com/Yu-Miri/Paper/assets/121469490/0bf485a5-9409-4ebf-b503-5cd29f11c2bf">
 
 Methodology
 
@@ -123,13 +132,12 @@ Text Modification Module(TMM) : Pre-Transformation & Modification Module
     - Text Image를 잘 읽게하기 위해 Pretrained Recognizer를 도입한다.
     - G는 그램 행렬, 밸런스 팩터는 µv1과 µv2는 각각 1과 500으로 설정한다
 - Loss
-    
-    ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fce6f7e6-b2f9-406a-b606-623ef4a74ad6/Untitled.png)
-    
-    - 예측된 Background Inpainting Image(O_s^)와 예측된 Fushion Image(O_t)는 **GAN loss**와 **L2 loss**로 최적화한다.
-    - Editing Guidance의 Guide_s, Guide_t Image는 **Dice loss** 채택한다.
-    - 사실적인 Image Generator를 위해 **VGG loss(Perceptual Loss + Style Loss)를** 채택한다.
-    - Recognizer Loss : **Cross Entropy Loss**를 사용한다.
+  
+    <img width="529" alt="스크린샷 2023-08-27 오후 3 48 27" src="https://github.com/Yu-Miri/Paper/assets/121469490/bee61928-3dd9-4027-a46c-42fc879390ee">
+    - 예측된 Background Inpainting Image(O_s^)와 예측된 Fushion Image(O_t)는 **GAN loss(생성된 입력 텐서의 로그값 평균을 계산하고 음수를 취하여 Loss 계산)하므로** 와 **L2 loss(정답값 입력텐서와 생성한 입력 텐서 간 차이의 제곱을 계산하여 평균을 구하는 L2 loss)**로 최적화한다.
+    - Editing Guidance의 Guide_s, Guide_t Image는 **Dice loss(정답값 입력 텐서와 생성한 입력 텐서 간의 교집합을 계산하여 평균을 구하고 1에서 뺀 값으로 정의되므로, Dice Loss는 정답과 생성한 타깃 간의 유사성이 높을 수록 손실이 작아진다. 즉, Loss를 낮추는 방향으로 학습)과 생성한** 채택한다.
+    - 사실적인 Image Generator를 위해 **VGG loss(MSE 평균제곱의 오차를 계산하는 VGG Loss는 Perceptual Loss + Style Loss : 정답값 입력 텐서와 생성한 입력 텐서 사이의 절댓값 차이를 계산하여 계산된 차이의 평균을 구하는 L1 loss, 절댓값의 평균이므로 낮추는 방향으로 학습)를** 채택한다.
+    - Recognizer Loss : **Cross Entropy Loss(정답값 입력 텐서와 생성한 입력 텐서의 로그 확률을 계산하여 음수를 취한 후 평균을 계산)**를 사용한다.
     - Discriminator Loss : Binary Cross Entropy Loss의 음수를 사용하여 손실을 계산
     - Generator Loss : GANLoss+L2Loss+DiceLoss
 
@@ -167,7 +175,7 @@ Text Modification Module(TMM) : Pre-Transformation & Modification Module
 
 MOSTEL의 기능 비교
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ecd80564-b595-4e5b-9194-aad031a89f81/Untitled.png)
+<img width="566" alt="스크린샷 2023-08-27 오후 3 49 07" src="https://github.com/Yu-Miri/Paper/assets/121469490/e10d3160-0eef-4ff7-9a25-c2529264ff13">
 
 Source Image : 원본 이미지
 
