@@ -1,6 +1,6 @@
 
 # **Exploring Stroke-Level Modifications for Scene Text Editing**
-### 용어 정리
+
 ### 용어 설명
 
 | Image | Description |
@@ -20,6 +20,7 @@
 | PSP[Pyramid Scene Parsing] | • 이미지의 크기를 여러 단위로 조정하여 하나의 입력 이미지에 대해서 다양한 크기를 학습하는 모듈 |
 | SLM[Stroke Level Modification] | 배경의 무결성을 위해 픽셀의 변화를 최소화하는 모듈 |
 
+----
 논문을 읽는 이유
 
     - K-예능, 드라마의 Text를 OCR으로 Text Detection & Recognition 후에 영어로 Translation해서 동일한 Style으로 Transfer 하는 프로젝트 목표와 일치하는 Task이다.
